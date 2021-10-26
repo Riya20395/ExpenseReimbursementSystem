@@ -111,7 +111,7 @@ public class UserDaoDB implements UserDao {
 		try {
 			Connection con = conUtil.getConnection();
 
-			String sql = "SELECT * FROM ers_users WHERE ers_users.username = '" + userName + "'";
+			String sql = "SELECT * FROM ers_users WHERE ers_users.ers_username='" + userName + "'";
 
 			Statement s = con.createStatement();
 			ResultSet rs = s.executeQuery(sql);

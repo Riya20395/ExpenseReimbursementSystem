@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.example.controllers.LoginController;
+import com.example.controllers.SignUpController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 public class Dispatcher {
@@ -17,6 +18,9 @@ public class Dispatcher {
 		case "/ExpenseReimbursementSystem/api/login":
 				LoginController.login(req, res);
 				break;
+		case "/ExpenseReimbursementSystem/api/signUp":
+			SignUpController.signUp(req, res);
+			break;
 		}
 	}
 	

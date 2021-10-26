@@ -1,14 +1,17 @@
 package com.example.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.example.models.Reimbursement;
+import com.example.models.User;
 import com.example.utils.ConnectionUtil;
 
 public class ReimbursementDaoDB implements ReimbursementDao {
@@ -137,4 +140,101 @@ public class ReimbursementDaoDB implements ReimbursementDao {
 		return null;
 	}
 
+	
+	@Override
+	public List<Reimbursement> getAllReimbursementByStatus(int ReimbStatusId) {
+		List<Reimbursement> reimbursementList = new ArrayList<Reimbursement>();
+
+		try {
+			// Make the actual connection to the db
+			Connection con = conUtil.getConnection();
+
+			// Create a simple statement
+			String sql = "SELECT * FROM ers_reimbursement WHERE ers_reimbursement.reimb_id = '" + ReimbStatusId + "'";
+
+			// We need to create a statement with the sql string 
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+
+			// We have to loop through the ResultSet and create objects based off the return
+			while (rs.next()) {
+				reimbursementList.add(new Reimbursement(rs.getInt(1),rs.getDouble(2), rs.getString(3),rs.getBytes(4),rs.getInt(5),rs.getInt(6),rs.getInt(7), rs.getInt(8)));
+			}
+
+			return reimbursementList;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	@Override
+	public List<Reimbursement> getAllReimbursementByStatusByAuthor(int ReimbAuthor, int ReimbStatusId) {
+		List<Reimbursement> reimbursementList = new ArrayList<Reimbursement>();
+
+		try {
+			// Make the actual connection to the db
+			Connection con = conUtil.getConnection();
+
+			// Create a simple statement
+			String sql = "SELECT * FROM ers_reimbursement WHERE ers_reimbursement.reimb_id = '" + ReimbAuthor + "',ers_reimbursement.reimb_id = '" + ReimbStatusId + "'";
+
+			// We need to create a statement with the sql string 
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+
+			// We have to loop through the ResultSet and create objects based off the return
+			while (rs.next()) {
+				reimbursementList.add(new Reimbursement(rs.getInt(1),rs.getDouble(2), rs.getString(3),rs.getBytes(4),rs.getInt(5),rs.getInt(6),rs.getInt(7), rs.getInt(8)));
+			}
+
+			return reimbursementList;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	@Override
+	public User loadUserRequest(User u) {
+		List<Reimbursement> requests = new ArrayList<Reimbursement>();
+		
+		try {
+			
+			Connection con = conUtil.getConnection();
+			
+			con.setAutoCommit(false);
+			
+			String sql = "{?=call get_user_requests(?)}";
+			
+			CallableStatement cs = con.prepareCall(sql);
+			
+			cs.registerOutParameter(1, Types.OTHER);
+			cs.setInt(2, u.getUserId());
+			
+			cs.execute();
+			
+			ResultSet rs = (ResultSet) cs.getObject(1);
+			
+			while(rs.next()) {
+				Reimbursement r = new Reimbursement(rs.getInt(1),rs.getDouble(2),rs.getString(3),rs.getBytes(4), rs.getInt(5), rs.getInt(6), rs.getInt(7),rs.getInt(8));
+				requests.add(r);
+			}
+			
+			u.setRequests(requests);
+			
+			con.setAutoCommit(true);
+			
+			return u;	
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+}
 }

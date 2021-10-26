@@ -1,5 +1,7 @@
 package com.example.models;
 
+import java.util.List;
+
 public class User {
 	
 	private int userId;
@@ -9,6 +11,7 @@ public class User {
 	private String lastName;
 	private String email;
 	private int userRoleId;
+	private List<Reimbursement> requests;
 	
 	public User() {
 	}
@@ -93,6 +96,14 @@ public class User {
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", firstName="
 				+ firstName + ", lastName=" + lastName + ", email=" + email + ", userRoleId=" + userRoleId + "]";
+	}
+
+	public List<Reimbursement> getRequests() {
+		return requests;
+	}
+
+	public void setRequests(List<Reimbursement> requests) {
+		this.requests = requests;
 	}
 	
 	
