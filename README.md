@@ -56,4 +56,3 @@ Employees must select the type of reimbursement as: LODGING, TRAVEL, FOOD, or OT
 ## Activity Diagram
 
 ![activity](p1-activity.jpg)
-
