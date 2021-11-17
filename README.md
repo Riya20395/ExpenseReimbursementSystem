@@ -8,8 +8,8 @@ The Expense Reimbursement System (ERS) will manage the process of reimbursing em
 -css
 
 
-## Project User Stories: 
-# As an employee I can:
+# Project User Stories: 
+## As an employee I can:
  - Login,signup,Logout 
  - View the employee home page 
  - Submit a reimbursement request 
@@ -18,7 +18,7 @@ The Expense Reimbursement System (ERS) will manage the process of reimbursing em
  - View my account information 
  - Update account information 
 
-# As a manager I can: 
+## As a manager I can: 
 - Login,signup,Logout
 - View the manager home page 
 - Approve/Deny pending reimbursement requests 
