@@ -10,7 +10,7 @@ css
 
 ## Project User Stories: 
 * As an employee I can:
- - Login, Logout 
+ - Login,signup,Logout 
  - View the employee home page 
  - Submit a reimbursement request 
  - View pending reimbursement requests
@@ -19,7 +19,7 @@ css
  - Update account information 
 
 * As a manager I can: 
-- Login - Logout
+- Login,signup,Logout
 - View the manager home page 
 - Approve/Deny pending reimbursement requests 
 - View all pending requests of all employees 
