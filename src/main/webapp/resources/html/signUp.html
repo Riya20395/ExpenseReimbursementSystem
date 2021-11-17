@@ -1,41 +1,66 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Social Hub</title>
-</head>
+<link rel="stylesheet" href="../css/signup.css">
+<title>Expense Reimbursement: Signup</title></head>
 <body>
+<div ID = "masterDiv">
 
-	<h1>Welcome to Expense Reimbursement System </h1>
-	<h3>Please Sign Up</h3>
-	
-	<form id="signUp">
-		<label for="username">Username: </label>
-		<input id="username" type="text" name="username" required/></br>
-		
-		<label for="password">Password: </label>
-		<input id="password" type="password" name="password" required/></br>
-		
-		<label for="firstname">firstname: </label>
-		<input id="firstname" type="text" name="firstname" required/></br>
-		
-		<label for="lastname">lastname: </label>
-		<input id="lastname" type="text" name="lastname" required/></br>
-		
-		<label for="email">email: </label>
-		<input id="email" type="email" name="email" required/></br>
-		
-		
-		<label for="rollid">Choose a Roll:</label>
-  		<select name="rollid" id="rollid">
-    	<option value="1">Employee</option>
-    	<option value="2">Manager</option>	
- 		</select>
-	    <br><br>
-		
-		<input type="submit" value="signUp"/>
-	</form>
-	
-	<script src="../js/signUp.js"></script>
+<div class = "header">
+<img src="logo.png" ID="logo" />
+<h1>Welcome to the Expense Reimbursement System</h1>
+</div>
+
+<div ID ="signUpDiv">
+<div ID="signUpFormDiv">
+<h1>Sign Up:</h1>
+<form ID ="signUpForm">
+<label for="firstname">&nbsp;First Name:       </label>
+<input ID="firstname" type="text" name="firstname" required />
+<br>
+<label for="lastname">&nbsp;Last Name: </label>
+<input ID="lastname" type="text" name="lastname" required />
+<br>
+<label for="email">&nbsp;Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<input ID="email" type="text" name="email" required />
+<br>
+<label for="username">&nbsp;Username:&nbsp;</label>
+<input ID="username" type="text" name="username" />
+<br>
+<label for="password">&nbsp;Password: &nbsp;</label>
+<input ID="password" type="password" name="password">
+<br>
+<br>
+<label for="manager">Manager? </label>
+<div ID ="managerQuestion">
+<input ID="manager" type="checkbox" name="manager">
+</div>
+<br>
+<br>
+<input ID="submitbtn" type="submit" value="Sign Up" />
+</form>
+</div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div ID = "menu">
+<ul ID = "menuList">
+<li>Already have an account?</li>
+<a href= "http://localhost:8080/ERS/resources/html/login.html">Login</a>
+</ul>
+</div>
+
+<!--  end master Div -->
+</div>
+
+<script src="../js/signup.js"></script>
 </body>
+
+
 </html>
